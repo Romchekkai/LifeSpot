@@ -5,20 +5,35 @@
     <meta charset="UTF-8">
     <title>LifeSpot</title>
     <link href="../Static/CSS/index.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../Static/JS/index.js"></script>
+    <script>
+
+        // обработка сессии
+       // handleSession(logger, checker /* Коллбек-функции */);
+
+        setTimeout(() =>
+            alert("Нравится LifeSpot? " + '\n' + "Подпишитесь на наш Instagram @lifespot999!"),
+            30000);
+       
+
+        // функция для получения пользовательского ввода
+        const inputParseFunction = function () {
+            return document.getElementsByTagName('input')[0].value.toLowerCase();
+        }
+    </script>
+
+
 </head>
 <body>
     <header>
         <header id="header-index">
             <!--Заголовок страницы-->
             <h1>LifeSpot - прямые трансляции с улиц</h1>
-            <form class="forma" action="" method="post">
-                <label title="Введите название искомого видео" for="video_serch"> Поиск видео</label>
-                <input type="text"
-                       placeholder="Введите названия искомой трансляции"
-                       name="video_serch" id="video_serch" />
-            </form>
+
             <!--Параграф-->
             <p>Покажем, что происходит прямо сейчас</p>
+
+            Введите место для поиска трансляции: <input type="text" id="userInput" oninput="filterContent() /* Вызов по имени переменной */" />
         </header>
     </header>
     <div class="video-container">
@@ -33,15 +48,32 @@
         <iframe width="560" height="315" src="https://www.youtube.com/embed/JplMzss6_YE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <h3 class="video-title">Лондон, автобусный маршрут</h3>
     </div>
-    <aside id="sidebar">
-        <div class="navbar">
-            <a href="/"><p>Все трансляции</p></a>
-            <a href="/"><p>О проекте</p></a>
-        </div>
-    </aside>
-    <footer>
-        <p>LifeSpot - все права защищены</p>
-        <p>Связаться с нами: contact@lifespot.ru</p>
-    </footer>
+    <!--SIDEBAR-->
+    <!--FOOTER-->
 </body>
 </html>
+<!--<form class="forma" action="" method="post">
+    <label title="Введите название искомого видео" for="video_serch"> Поиск видео</label>
+    <input type="text" oninput="
+           /*Код ниже отрабатывает каждый раз при вводе символа в input* /
+           // Сохраняем текст пользовательского запроса.
+           let inputString=document.getElementsByTagName('input')[0].value.toLowerCase();
+           // Находим контейнеры с видео, которые необходимо фильтровать
+           let elements=document.getElementsByClassName('video-container');
+           // Пробегаемся по контейнерам
+           for (let i=0; i <= elements.length; i++ ){
+    // Вытаскиваем текст описания видео, которое необходимо отфильтровать
+    let videoText = elements[i].querySelector(".video-title").innerText;
+    // Выполняем фильтрацию, сравнивая значения в нижнем регистре
+    if(!videoText.toLowerCase().includes(inputString.toLowerCase())){
+    // Описание
+    elements[i].style.display = 'none';
+    } else {
+    elements[i].style.display = 'inline-block';
+    }
+    }
+
+    " size="50%"
+    placeholder="Введите названия искомой трансляции"
+    name="video_serch" id="video_serch" />
+</form>    <script src="../Static/JS/index.js"></script>       -->

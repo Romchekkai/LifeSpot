@@ -8,7 +8,7 @@
     }
 
 header, body, footer, .video-container {
-    background-color: chocolate;
+    background-color: #23E3C9;
 }
 
 header {
@@ -88,80 +88,133 @@ input {
     padding-top: 1%;
 }
 
-.prev, .next{
+.carousel {
+    position: relative;
+    text-align:center;
+    
+}
+
+.items-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.item {
+    display: none;
+    position: relative;
+    animation: 0.5s ease-in-out;
+    margin: 0 auto;
+}
+
+.active,
+.next {
+    display: block;
+}
+
+.next {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.description {
+    margin: 30px 20%;
+    font-size: 32px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.project-name {
+    padding: 10px;
+}
+
+.control {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 15%;
     cursor: pointer;
+}
+
+    .control.left {
+        left: 0;
+        right: auto;
+    }
+
+    .control.right {
+        right: 0;
+        left: auto;
+    }
+
+.arrow {
+    display: inline-block;
     position: absolute;
     top: 50%;
-    width:auto;
-    margin-top: -22px;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
+    transform: translateY(-50%);
+    font-size: 84px;
 }
 
-.next{
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-.prev:hover, .next:hover{
-    background-color:aqua;
-}
-.text {
-    position:absolute;
-    bottom: 0;
-    left: 40%;
-    color: darkmagenta;
-    font-size: 12px;
-    padding: 8px 12px;
-}
-.dot {
-    cursor: pointer;
-    height: 13px;
-    width: 13px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-}
-.active, .dot:hover{
-    background-color: #717171;
+    .arrow.right {
+        right: 50%;
+    }
+
+.to-left {
+    animation-name: left;
 }
 
-.fade {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration:1.5s;
-    animation-name:fade;
-    anivation-duration:1.5s
+.from-right {
+    animation-name: right;
 }
-@-webkit-keyframes fade{
+
+.to-right {
+    animation-name: right;
+    animation-direction: reverse;
+}
+
+.from-left {
+    animation-name: left;
+    animation-direction: reverse;
+}
+
+@keyframes left {
     from {
-        opacity: .4
+        left: 0;
     }
 
     to {
-        opacity: 1
+        left: -100%;
     }
 }
-@keyframes fade{
+
+@keyframes right {
     from {
-        opacity: .4
+        left: 100%;
     }
 
     to {
-        opacity: 1
+        left: 0;
     }
 }
 
-#slides {
-    max-width: 500px;
-    position: relative;
-    margin: auto;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+@media (max-width: 960px) {
+    .description {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .control > .arrow {
+        display: none;
+    }
+
+    .project-name {
+        display: none;
+    }
+
+    .description {
+        border: 0;
+    }
 }
